@@ -55,6 +55,16 @@ void pizeroInit(void) {
 	bcm2835_gpio_fsel(gpio_no, BCM2835_GPIO_FSEL_INPT);
 	bcm2835_gpio_set_pud(gpio_no, BCM2835_GPIO_PUD_UP );
 
+	vcc_yes = buttonPin("TREZOR_VCC_YES", 20);
+	bcm2835_gpio_fsel(vcc_yes, BCM2835_GPIO_FSEL_OUTP);
+	bcm2835_gpio_set_pud(vcc_yes, BCM2835_GPIO_PUD_UP );
+	bcm2835_gpio_write(vcc_yes, HIGH);
+
+	vcc_no = buttonPin("TREZOR_VCC_NO", 8);
+	bcm2835_gpio_fsel(vcc_no, BCM2835_GPIO_FSEL_OUTP);
+	bcm2835_gpio_set_pud(vcc_no, BCM2835_GPIO_PUD_UP );
+	bcm2835_gpio_write(vcc_no, HIGH);
+
 	//output on oled if configured also
 	if (getenv("TREZOR_OLED_TYPE")) {
 		oled_type = atoi(getenv("TREZOR_OLED_TYPE"));
