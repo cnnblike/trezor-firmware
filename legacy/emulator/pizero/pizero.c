@@ -28,6 +28,8 @@
 
 static uint8_t gpio_yes;
 static uint8_t gpio_no;
+static uint8_t vcc_yes;
+static uint8_t vcc_no;
 static uint8_t oled_type = 0;
 
 static uint8_t buttonPin(const char* pinVarName, uint8_t defaultPin) {
